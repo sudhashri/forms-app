@@ -1,10 +1,13 @@
-<div class='container hightlight'>
+<div class='container'>
   <h3>Employee Form</h3>
 
   <form #form="ngForm" novalidate>
     <div class='form-group form-inline'>
       <label>First Name</label>
       <input #firstName='ngModel' type="text" class="form-control" required placeholder="First Name" name="firstName" [(ngModel)]='emp.firstName'>
+      <div class="alert alert-danger" *ngIf='firstName.invalid && firstName.touched'>
+        First Name is required.
+      </div>
     </div>
 
     <!-- <div class='form-group form-inline'>
@@ -48,7 +51,7 @@
   <input type="date" class="form-control" name="doj" [(ngModel)]="doj">
 </div> -->
 
-<div class="container hightlight" id="empDetails">
+<!-- <div class="container hightlight" id="empDetails">
   <h4>Employee Details</h4>
   <p>
     Model : {{ emp | json }}
@@ -58,4 +61,4 @@
   </p>
   <p>Classes: </p>
   Employee first name entered: {{firstName.valid}}
-</div>
+</div> -->
