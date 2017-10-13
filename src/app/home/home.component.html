@@ -1,13 +1,14 @@
-<div class='container'>
+<div class='container hightlight'>
   <h3>Employee Form</h3>
 
   <form #form="ngForm" novalidate>
     <div class='form-group form-inline'>
       <label>First Name</label>
-      <input type="text" class="form-control" required placeholder="First Name" name="firstName" [(ngModel)]='emp.firstName'>
+      <input #firstName type="text" class="form-control" required placeholder="First Name"
+          name="firstName" [(ngModel)]='emp.firstName'>
     </div>
 
-    <div class='form-group form-inline'>
+    <!-- <div class='form-group form-inline'>
       <label>Last Name</label>
       <input type="text" class="form-control" required placeholder="Last Name" name="lastName" [(ngModel)]='emp.lastName'>
     </div>
@@ -35,20 +36,27 @@
           {{lang}}
         </option>
       </select>
-    </div>
+    </div> -->
 
     <button type="submit" class="btn btn-primary">
       Ok
     </button>
   </form>
-
-  <div class="container" id="empDetails">
-    Employee : {{ emp | json }}
-    <!-- <br> Angular:{{ form.value | json}} -->
-  </div>
 </div>
 
 <!--<div class='form-group form-inline'>
   <label>DOJ</label>
   <input type="date" class="form-control" name="doj" [(ngModel)]="doj">
 </div> -->
+
+<div class="container hightlight" id="empDetails">
+  <h4>Employee Details</h4>
+  <p>
+    Model : {{ emp | json }}
+  </p>
+  <p>
+    Angular : {{ form.value | json}}
+  </p>
+  <p>Classes: </p>
+  Employee first name: {{firstName.className}}
+</div>
