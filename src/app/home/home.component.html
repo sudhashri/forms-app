@@ -4,9 +4,15 @@
   <form #form="ngForm" novalidate>
     <div class="form-group form-inline" [class.has-error]="firstName.invalid && firstName.touched">
       <label class="control-label">First Name</label>
-      <input #firstName="ngModel" type="text" class="form-control" required placeholder="First Name" name="firstName" [(ngModel)]="emp.firstName">
+      <input #firstName="ngModel" type="text" class="form-control" pattern="^\D" maxlength="15" placeholder="First Name" name="firstName"
+        [(ngModel)]="emp.firstName">
       <div class="alert alert-danger" *ngIf="firstName.invalid && firstName.touched">
-        First Name is required.
+        First Name
+        <ul>
+          <li>is required</li>
+          <li>cannot be more than 15 characters</li>
+          <li>must start with Caps</li>
+        </ul>
       </div>
     </div>
 
@@ -36,6 +42,7 @@
       <select class="form-control" name="primaryLang" [(ngModel)]="emp.primaryLang">
         <option *ngFor="let lang of languages">
           {{lang}}
+
         </option>
       </select>
     </div> -->
