@@ -13,14 +13,21 @@ export class HomeComponent implements OnInit {
     'Kannada',
     'Hindi',
     'Other'];
-
   doj: Date;
-
   emp = new Employee('Sudha', 'Hebbar', true, '1099', 'Kannada');
+  hasPrimaryLangErr = false;
 
   constructor() { }
 
   ngOnInit() {
+  }
+
+  validatePrimaryLang(value): void {
+    if (value === 'default') {
+      this.hasPrimaryLangErr = true;
+    } else {
+      this.hasPrimaryLangErr = false;
+    }
   }
 
 

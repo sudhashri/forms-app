@@ -35,17 +35,18 @@
       <div>
         <input type="radio" name="paymentType" ngModel value="1099" [(ngModel)]="emp.paymentType">1099
       </div>
-    </div>
+    </div> -->
 
-    <div class="form-group">
-      <label>Primary Language</label>
-      <select class="form-control" name="primaryLang" [(ngModel)]="emp.primaryLang">
+    <div class="form-group" [class.has-error]='hasPrimaryLangErr'>
+      <label class="control-label">Primary Language</label>
+      <select class="form-control" #primaryLang name="primaryLang" [(ngModel)]="emp.primaryLang" (blur)='validatePrimaryLang(primaryLang.value)'
+        (change)='validatePrimaryLang(primaryLang.value)'>
+        <option value='default'>Select a Language...</option>
         <option *ngFor="let lang of languages">
           {{lang}}
-
         </option>
       </select>
-    </div> -->
+    </div>
 
     <button type="submit" class="btn btn-primary">
       Ok
