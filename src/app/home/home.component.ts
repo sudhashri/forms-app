@@ -11,10 +11,12 @@ import { NgForm } from '@angular/forms';
 export class HomeComponent implements OnInit {
 
   languages = [];
-  doj: Date;
-  emp = new Employee('Sudha', 'Hebbar', true, '1099', 'Kannada');
+  emp = new Employee('Sudha', 'Hebbar', 'Full Time Employee', '1099', 'Kannada', new Date('08/03/2015 9:00 AM'));
   hasPrimaryLangErr = false;
   hasError = false;
+
+  minDate = new Date('Oct 26 1998');
+  maxDate = new Date();
 
   constructor(private _formPosterService: FormPosterService) {
     this._formPosterService.getLanguages()

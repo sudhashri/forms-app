@@ -1,7 +1,7 @@
-<div class="container" *ngIf='languages.length > 0 && !hasError'>
+<div class="container" *ngIf="languages.length > 0 && !hasError">
   <h3>Employee Form</h3>
 
-  <form #form="ngForm" novalidate (submit)='submitForm(form)'>
+  <form #form="ngForm" novalidate (submit)="submitForm(form)">
     <div class="form-group form-inline" [class.has-error]="firstName.invalid && firstName.touched">
       <label class="control-label">First Name</label>
       <input #firstName="ngModel" type="text" class="form-control" required placeholder="First Name" name="firstName" [(ngModel)]="emp.firstName">
@@ -19,39 +19,44 @@
     </div>
 
     <div class="checkbox form-group form-inline">
-      <label>
-        <input type="checkbox" name="fte" [(ngModel)]="emp.isFullTime"> Full Time Employee
-      </label>
+      <button type="button" class="btn" [class.btn-primary]="emp.type == 'Full Time Employee'" btnCheckbox btnCheckboxTrue="Full Time Employee"
+        btnCheckboxFalse="Contractor" name="fte" [(ngModel)]="emp.type">{{emp.type}}</button>
     </div>
 
     <div class="form-group">
       <label>Payment Type</label>
-      <div>
-        <input type="radio" name="paymentType" value="w2" checked [(ngModel)]="emp.paymentType">W2
-      </div>
-      <div>
-        <input type="radio" name="paymentType" ngModel value="1099" [(ngModel)]="emp.paymentType">1099
+      <div class="btn-group">
+        <label class="btn btn-primary" [(ngModel)]="emp.paymentType" btnRadio="W2" name="paymentType">Type: W2</label>
+        <label class="btn btn-primary" [(ngModel)]="emp.paymentType" btnRadio="1099" name="paymentType">Type: 1099</label>
+        <label class="btn btn-primary" [(ngModel)]="emp.paymentType" btnRadio="Other" name="paymentType">Type: Other</label>
       </div>
     </div>
 
-    <div class="form-group" [class.has-error]='hasPrimaryLangErr'>
+    <div class="form-group" [class.has-error]="hasPrimaryLangErr">
       <label class="control-label">Primary Language</label>
-      <select class="form-control" #primaryLang name="primaryLang" [(ngModel)]="emp.primaryLang" (blur)='validatePrimaryLang(primaryLang.value)'
-        (change)='validatePrimaryLang(primaryLang.value)'>
+      <select class="form-control" #primaryLang name="primaryLang" [(ngModel)]="emp.primaryLang" (blur)="validatePrimaryLang(primaryLang.value)"
+        (change)="validatePrimaryLang(primaryLang.value)">
 
-        <option value='default'>Select a Language...</option>
+        <option value="default">Select a Language...</option>
         <option *ngFor="let lang of languages">
           {{lang}}
         </option>
       </select>
     </div>
 
-    <button type="submit" class="btn btn-primary" [disabled]='form.invalid'>
-      Ok
-    </button>
+    <div class="form-group" style="display: inline-block">
+      <label class="control-label">Date of joining</label>
+      <datepicker name="empStartDate" [(ngModel)]="emp.doj" [showWeeks]="false" [minDate]="minDate" [maxDate]="maxDate"></datepicker>
+    </div>
+
+    <div class="form-group">
+      <button type="submit" class="btn btn-primary" [disabled]="form.invalid">
+        Submit
+      </button>
+    </div>
   </form>
 </div>
-<h3 *ngIf='languages.length == 0'>Loading...</h3>
-<h3 class='container' *ngIf='hasError'>
+<h3 *ngIf="languages.length == 0">Loading...</h3>
+<h3 class="container" *ngIf="hasError">
   Form could not be submitted.
 </h3>
