@@ -55,3 +55,4 @@ export class HomeComponent implements OnInit {
       this.hasPrimaryLangErr = false;
     }
   }
+}
