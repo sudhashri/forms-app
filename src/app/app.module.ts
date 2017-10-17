@@ -5,7 +5,7 @@ import { FormsModule } from '@angular/forms';
 import { AppComponent } from './app.component';
 import { HomeComponent } from './home/home.component';
 import { AppRoutingModule } from './app-routing.module';
-import { DatepickerModule, TimepickerModule, ButtonsModule  } from 'ngx-bootstrap';
+import { DatepickerModule, TimepickerModule, ButtonsModule, RatingModule } from 'ngx-bootstrap';
 
 @NgModule({
   declarations: [
@@ -18,6 +18,7 @@ import { DatepickerModule, TimepickerModule, ButtonsModule  } from 'ngx-bootstra
     DatepickerModule.forRoot(),
     TimepickerModule.forRoot(),
     ButtonsModule.forRoot(),
+    RatingModule.forRoot(),
     AppRoutingModule
   ],
   providers: [],

@@ -13,7 +13,15 @@ export class HomeComponent {
   startDate = new Date('08/03/2015 9:00 AM');
 
   onOffSwitch = 'On';
-  taxType= 'W2';
+  taxType = 'W2';
+
+  max = 5;
+  rate = 2;
+  isReadonly = false;
 
   constructor() { }
+
+  onHoverEvent(value: number) {
+    this.rate = value;
+  }
 }

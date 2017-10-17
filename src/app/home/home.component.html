@@ -26,5 +26,10 @@
       </div>
     </div>
 
+    <div class="form-group">
+      <rating [(ngModel)]="rate" [max]="max" name='rate' [readonly]='isReadonly' (onHover)='onHoverEvent($event)'></rating>
+      <pre class="card-block card-header" style="margin:15px 0;">Rate: <b>{{rate}}</b> </pre>
+    </div>
+
   </form>
 </div>
