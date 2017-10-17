@@ -7,6 +7,7 @@
 
 # dependencies
 /node_modules
+node_server/node_modules
 
 # IDEs and editors
 /.idea
@@ -30,6 +31,7 @@
 /coverage
 /libpeerconnection.log
 npm-debug.log
+node_server/npm-debug.log
 testem.log
 /typings
 

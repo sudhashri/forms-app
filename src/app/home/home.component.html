@@ -1,24 +1,21 @@
-<div class="container">
+<div class="container" *ngIf='languages.length > 0 && !hasError'>
   <h3>Employee Form</h3>
 
-  <form #form="ngForm" novalidate>
+  <form #form="ngForm" novalidate (submit)='submitForm(form)'>
     <div class="form-group form-inline" [class.has-error]="firstName.invalid && firstName.touched">
       <label class="control-label">First Name</label>
-      <input #firstName="ngModel" type="text" class="form-control" required pattern="^[A-Z][A-Za-z0-9_]{1,14}$" maxlength="15"
-        placeholder="First Name" name="firstName" [(ngModel)]="emp.firstName">
+      <input #firstName="ngModel" type="text" class="form-control" required placeholder="First Name" name="firstName" [(ngModel)]="emp.firstName">
       <div class="alert alert-danger" *ngIf="firstName.invalid && firstName.touched">
-        First Name
-        <ul>
-          <li>is required</li>
-          <li>cannot be more than 15 characters</li>
-          <li>must start with Caps</li>
-        </ul>
+        First Name is required.
       </div>
     </div>
 
-    <!-- <div class="form-group form-inline">
-      <label>Last Name</label>
-      <input type="text" class="form-control" required placeholder="Last Name" name="lastName" [(ngModel)]="emp.lastName">
+    <div class="form-group form-inline" [class.has-error]="lastName.invalid && lastName.touched">
+      <label class="control-label">Last Name</label>
+      <input #lastName="ngModel" type="text" class="form-control" required placeholder="Last Name" name="lastName" [(ngModel)]="emp.lastName">
+      <div class="alert alert-danger" *ngIf="lastName.invalid && lastName.touched">
+        Last Name is required.
+      </div>
     </div>
 
     <div class="checkbox form-group form-inline">
@@ -41,36 +38,20 @@
       <label class="control-label">Primary Language</label>
       <select class="form-control" #primaryLang name="primaryLang" [(ngModel)]="emp.primaryLang" (blur)='validatePrimaryLang(primaryLang.value)'
         (change)='validatePrimaryLang(primaryLang.value)'>
+
         <option value='default'>Select a Language...</option>
         <option *ngFor="let lang of languages">
           {{lang}}
         </option>
       </select>
-    </div> -->
+    </div>
 
     <button type="submit" class="btn btn-primary" [disabled]='form.invalid'>
       Ok
     </button>
-
-    <h4>{{form.valid}}</h4>
   </form>
 </div>
-
-<!--<div class="form-group form-inline">
-  <label>DOJ</label>
-  <input type="date" class="form-control" name="doj" [(ngModel)]="doj">
-</div> -->
-
-<!-- <div class="container hightlight" id="empDetails">
-  <h4>Employee Details</h4>
-  <p>
-    Model : {{ emp | json }}
-  </p>
-  <p>
-    Angular : {{ form.value | json}}
-  </p>
-  <p>Classes: </p>
-  Employee first name entered: {{firstName.valid}}
-
-  {{form.valid}}
-</div> -->
+<h3 *ngIf='languages.length == 0'>Loading...</h3>
+<h3 class='container' *ngIf='hasError'>
+  Form could not be submitted.
+</h3>
