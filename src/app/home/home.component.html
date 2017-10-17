@@ -1,11 +1,15 @@
 <div class='container'>
   <h3>Angular 2 Forms</h3>
-
   <form>
-    <div class='form-group form-inline'>
-      <datepicker name='startDate' [(ngModel)]='startDate' [showWeeks]='false' [minDate]='minDate' [maxDate]='maxDate'></datepicker>
+    <div class='form-group'>
+      <datepicker class='form-inline' name='startDate' [(ngModel)]='startDate' [showWeeks]='false' [minDate]='minDate' [maxDate]='maxDate'></datepicker>
+      <pre class="alert alert-info">Start Date: {{startDate}}</pre>
     </div>
-  </form>
 
-  {{startDate}}
+    <div class='form-group'>
+      <timepicker class='form-inline' name='startTime' [(ngModel)]="startDate" [minuteStep]='15' [arrowkeys]='false'></timepicker>
+      <pre class="alert alert-info">Start Time: {{startDate | date:'shortTime'}}</pre>
+    </div>
+
+  </form>
 </div>

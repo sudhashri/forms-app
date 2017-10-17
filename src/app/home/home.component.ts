@@ -11,7 +11,7 @@ export class HomeComponent {
   minDate = new Date('Oct 26 1998');
   maxDate = new Date();
 
-  startDate = new Date('08/03/2015');
+  startDate = new Date('08/03/2015 9:00 AM');
 
   constructor() {}
 }
