@@ -13,6 +13,7 @@ export class HomeComponent {
   startDate = new Date('08/03/2015 9:00 AM');
 
   onOffSwitch = 'On';
+  taxType= 'W2';
 
   constructor() { }
 }
